@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="description" content="Evidence-led AUTHEO documentation: chain references and clearly qualified ecosystem design guides."><title>Ecosystem concepts · AUTHEO Docs</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/docs.css"><script src="../assets/search-index.js" defer></script><script src="../assets/docs.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">A</span> AUTHEO <span class="brand-label">/ Documentation</span></a><span class="header-note">Evidence-led guides</span></header><div class="layout"><aside class="sidebar"><details class="navigation" open><summary>Browse documentation</summary><nav aria-label="Documentation"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">AUTHEO documentation</a></li><li><a href="../getting-started/index.html">Getting started</a></li></ul></section><section class="nav-group"><h2>Concepts</h2><ul><li><a href="architecture.html">Architecture</a></li><li><a aria-current="page" href="ecosystem.html">Ecosystem concepts</a></li><li><a href="data-flows.html">Data flows and handoffs</a></li><li><a href="security.html">Security boundaries</a></li></ul></section><section class="nav-group"><h2>Ecosystem components</h2><ul><li><a href="../components/mesh.html">L0 Mesh</a></li><li><a href="../components/connectivity.html">Connectivity</a></li><li><a href="../components/devhub.html">DevHub and OpenEdge</a></li><li><a href="../components/marketplace.html">Marketplace</a></li><li><a href="../components/freddie.html">Freddie agents</a></li></ul></section><section class="nav-group"><h2>Guides</h2><ul><li><a href="../guides/integration.html">Integration preparation</a></li><li><a href="../guides/node-operator.html">Node preparation</a></li><li><a href="../guides/application-lifecycle.html">Plan an application</a></li><li><a href="../guides/provider-design.html">Provider preparation</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="../reference/api.html">API reference</a></li><li><a href="../reference/networks.html">Network reference</a></li><li><a href="../reference/status.html">Status and support boundaries</a></li><li><a href="../reference/sources.html">Sources and verification</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></section><section class="nav-group"><h2>Maintain and troubleshoot</h2><ul><li><a href="../troubleshooting/index.html">Troubleshooting</a></li><li><a href="../contributing/index.html">Contributing</a></li><li><a href="../deployment/index.html">Standalone deployment</a></li></ul></section></nav></details></aside><div class="reading"><section class="search" aria-label="Search documentation" hidden><label for="docs-search">Search all 23 documents</label><input id="docs-search" type="search" placeholder="Search topics, APIs, networks…" autocomplete="off" aria-controls="search-results" aria-describedby="search-status"><p id="search-status" role="status"></p><ul id="search-results"></ul></section><main id="main" tabindex="-1"><p class="eyebrow">AUTHEO / DEVELOPER DOCUMENTATION</p><article><h1 id="the-autheo-ecosystem">The AUTHEO ecosystem</h1>
+<p>AUTHEO's design connects application development, independently supplied compute, commercial coordination, and a settlement chain. The intended experience is to describe a workload once, choose acceptable capacity and terms, run it on the mesh, and observe both execution and accounting without confusing the two.</p>
+<p><strong>Status:</strong> this page explains design intent, not general availability. The chain has separately reviewed public implementation evidence; the other components below have planning evidence but no release-tested workflow in this review. See <a href="../reference/status.html">capability status</a>.</p>
+<h2 id="components-and-their-jobs">Components and their jobs</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Component</th>
+<th>Intended responsibility</th>
+<th>Does not replace</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Connectivity</td>
+<td>Identify peers, discover addresses, establish sessions, repair routes</td>
+<td>Workload authorization or proof of trustworthy execution</td>
+</tr>
+<tr>
+<td><a href="../components/mesh.html">L0 Mesh</a></td>
+<td>Admit and execute workloads on provider nodes; report health and results</td>
+<td>Chain consensus or commercial agreement policy</td>
+</tr>
+<tr>
+<td><a href="../components/marketplace.html">Marketplace</a></td>
+<td>Describe offers, match demand, coordinate usage evidence and settlement</td>
+<td>The execution runtime or the buyer's signing decision</td>
+</tr>
+<tr>
+<td><a href="../components/devhub.html">DevHub and OpenEdge</a></td>
+<td>Turn source and deployment intent into observable project/build/deployment workflows</td>
+<td>Provider capacity, marketplace rules or a transaction ledger</td>
+</tr>
+<tr>
+<td><a href="../components/freddie.html">Freddie</a></td>
+<td>Carry out delegated, persistent operational workflows</td>
+<td>User authorization, spending limits or settlement verification</td>
+</tr>
+<tr>
+<td><a href="./architecture.html">AUTHEO Chain / L1</a></td>
+<td>Execute chain transactions and maintain ordered application state</td>
+<td>General-purpose hosting and workload correctness</td>
+</tr>
+</tbody>
+</table>
+<p>Here <strong>AUTHEO</strong> means the whole ecosystem. Use <strong>connectivity layer</strong> for the peer-network substrate, not AUTHEO alone. <strong>L0</strong> is the compute-layer name in this design; it is not a claim that all application traffic is blockchain traffic. <strong>Agentic OS</strong> groups the developer interfaces and Freddie; it is not a separate kernel or consensus network.</p>
+<h2 id="who-uses-what">Who uses what?</h2>
+<ul>
+<li><strong>Application developers</strong> use DevHub to express builds, resources, environments and deployments. Start with the <a href="../guides/application-lifecycle.html">application lifecycle</a>.</li>
+<li><strong>Compute buyers</strong> compare raw resources or packaged services and acceptance terms. Start with <a href="../components/marketplace.html">Marketplace</a>.</li>
+<li><strong>Providers</strong> advertise eligible capacity, run workloads and produce accountable usage records. Start with <a href="../guides/provider-design.html">provider preparation</a>.</li>
+<li><strong>Chain integrators and validators</strong> use versioned chain interfaces and network configuration, not a mesh installation recipe. Start with <a href="../guides/integration.html">integration</a> or <a href="../guides/node-operator.html">node preparation</a>.</li>
+<li><strong>Security reviewers</strong> examine permissions, provider trust, runtime isolation and signing independently. Start with <a href="./security.html">security boundaries</a>.</li>
+</ul>
+<h2 id="one-workload-three-different-flows">One workload, three different flows</h2>
+<ol>
+<li><strong>Intent and control:</strong> source revision → GitOps synchronization → DevHub deployment intent → Marketplace admission and placement → node admission.</li>
+<li><strong>Execution and data:</strong> artifact/input transfer → isolated runtime → service traffic or result → logs and completion evidence.</li>
+<li><strong>Agreement and accounting:</strong> buyer-approved terms → supported chain agreement mechanism → attributable usage/completion evidence → settlement outcome → reconciliation.</li>
+</ol>
+<p>These are logical design relationships, not a released API sequence. Logs and large artifacts belong off-chain in the design; durable settlement facts may be recorded on-chain. A successful build is not a running workload, and a running workload is not proof of settled payment. <a href="./data-flows.html">Data flows</a> details the handoffs.</p>
+<h2 id="what-the-design-makes-possible">What the design makes possible</h2>
+<p>The planning covers container services, functions, batch work, builds, AI/GPU jobs, edge APIs, storage and packaged services such as game-server hosting. It also describes developer services that combine application support with infrastructure. These are intended workload classes, not a tested support matrix, available catalogue, pricing promise or service-level agreement.</p>
+<p>For a specific use case, first state the runtime, data sensitivity, recovery requirements, region and budget. Then establish which released component can satisfy each requirement. Do not substitute an architectural aspiration for release evidence.</p>
+</article><nav class="page-links" aria-label="Previous and next documents"><a rel="prev" href="architecture.html">← Architecture</a><a rel="next" href="data-flows.html">Data flows and handoffs →</a></nav><footer>Reviewed 9 October 2026 · Source-backed is not live-tested.<br>Verify release and network before use.</footer></main></div><aside class="outline" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#components-and-their-jobs">Components and their jobs</a></li><li><a href="#who-uses-what">Who uses what?</a></li><li><a href="#one-workload-three-different-flows">One workload, three different flows</a></li><li><a href="#what-the-design-makes-possible">What the design makes possible</a></li></ul></aside></div></body></html>

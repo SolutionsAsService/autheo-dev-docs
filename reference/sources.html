@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="description" content="Evidence-led AUTHEO documentation: chain references and clearly qualified ecosystem design guides."><title>Sources and verification · AUTHEO Docs</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/docs.css"><script src="../assets/search-index.js" defer></script><script src="../assets/docs.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">A</span> AUTHEO <span class="brand-label">/ Documentation</span></a><span class="header-note">Evidence-led guides</span></header><div class="layout"><aside class="sidebar"><details class="navigation" open><summary>Browse documentation</summary><nav aria-label="Documentation"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">AUTHEO documentation</a></li><li><a href="../getting-started/index.html">Getting started</a></li></ul></section><section class="nav-group"><h2>Concepts</h2><ul><li><a href="../concepts/architecture.html">Architecture</a></li><li><a href="../concepts/ecosystem.html">Ecosystem concepts</a></li><li><a href="../concepts/data-flows.html">Data flows and handoffs</a></li><li><a href="../concepts/security.html">Security boundaries</a></li></ul></section><section class="nav-group"><h2>Ecosystem components</h2><ul><li><a href="../components/mesh.html">L0 Mesh</a></li><li><a href="../components/connectivity.html">Connectivity</a></li><li><a href="../components/devhub.html">DevHub and OpenEdge</a></li><li><a href="../components/marketplace.html">Marketplace</a></li><li><a href="../components/freddie.html">Freddie agents</a></li></ul></section><section class="nav-group"><h2>Guides</h2><ul><li><a href="../guides/integration.html">Integration preparation</a></li><li><a href="../guides/node-operator.html">Node preparation</a></li><li><a href="../guides/application-lifecycle.html">Plan an application</a></li><li><a href="../guides/provider-design.html">Provider preparation</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="api.html">API reference</a></li><li><a href="networks.html">Network reference</a></li><li><a href="status.html">Status and support boundaries</a></li><li><a aria-current="page" href="sources.html">Sources and verification</a></li><li><a href="glossary.html">Glossary</a></li></ul></section><section class="nav-group"><h2>Maintain and troubleshoot</h2><ul><li><a href="../troubleshooting/index.html">Troubleshooting</a></li><li><a href="../contributing/index.html">Contributing</a></li><li><a href="../deployment/index.html">Standalone deployment</a></li></ul></section></nav></details></aside><div class="reading"><section class="search" aria-label="Search documentation" hidden><label for="docs-search">Search all 23 documents</label><input id="docs-search" type="search" placeholder="Search topics, APIs, networks…" autocomplete="off" aria-controls="search-results" aria-describedby="search-status"><p id="search-status" role="status"></p><ul id="search-results"></ul></section><main id="main" tabindex="-1"><p class="eyebrow">AUTHEO / DEVELOPER DOCUMENTATION</p><article><h1 id="sources-and-verification">Sources and verification</h1>
+<p>Review date: <strong>9 October 2026</strong>. Public source inspection was read-only. No wallet credentials, private planning exports, or live transaction payloads were sent to these sources.</p>
+<h2 id="primary-evidence">Primary evidence</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>ID</th>
+<th>Source</th>
+<th>What it supports</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1</td>
+<td><a href="https://github.com/autheo-blockchain/autheo-chain-core/blob/976ec4328d342a07e6ef7eb9ecaec222c55f29e1/go.mod">Chain go.mod</a></td>
+<td>Declared Go, Cosmos SDK, CometBFT and Ethermint dependencies</td>
+</tr>
+<tr>
+<td>C2</td>
+<td><a href="https://github.com/autheo-blockchain/autheo-chain-core/blob/976ec4328d342a07e6ef7eb9ecaec222c55f29e1/app/app.go">Application wiring</a></td>
+<td>EVM integration in source</td>
+</tr>
+<tr>
+<td>C3</td>
+<td><a href="https://github.com/autheo-blockchain/autheo-chain-core/blob/976ec4328d342a07e6ef7eb9ecaec222c55f29e1/proto/autheo/query.proto">Query protobuf</a></td>
+<td>Bounded API mappings and message fields</td>
+</tr>
+<tr>
+<td>C4</td>
+<td><a href="https://github.com/autheo-blockchain/autheo-chain-core/blob/976ec4328d342a07e6ef7eb9ecaec222c55f29e1/README.md">Chain README</a></td>
+<td>Repository ownership/context; operator links, with version drift noted</td>
+</tr>
+<tr>
+<td>N1</td>
+<td><a href="https://github.com/autheo-blockchain/networks/blob/a02ac6576dd3b687effc0d741a71a88b094aba21/README.md">Network README</a></td>
+<td>Published denomination, prefix, binary and configuration role</td>
+</tr>
+<tr>
+<td>N2</td>
+<td><a href="https://github.com/autheo-blockchain/networks/blob/a02ac6576dd3b687effc0d741a71a88b094aba21/mainnet/chain-id">Mainnet chain ID</a></td>
+<td>Exact published Cosmos chain ID</td>
+</tr>
+</tbody>
+</table>
+<p>Chain revision: 976ec4328d342a07e6ef7eb9ecaec222c55f29e1.
+Network revision: a02ac6576dd3b687effc0d741a71a88b094aba21.</p>
+<h2 id="evidence-precedence">Evidence precedence</h2>
+<p>For implementation details, prefer the selected release's code, manifests, schemas, and tests over an unversioned narrative. The reviewed chain README still names older Go and SDK versions than its manifest. A source implementation also does not prove that every network enables it.</p>
+<h2 id="limits">Limits</h2>
+<p>This review did not deploy the chain, run an AUTHEO SDK, verify mainnet transactions, attest infrastructure, audit cryptography, or obtain legal conclusions. Broader ecosystem implementation remains unverified; the component guides explain design intent separately. <a href="./status.html">Status</a> makes those limits visible by component.</p>
+<h2 id="design-evidence-versus-implementation-evidence">Design evidence versus implementation evidence</h2>
+<p>The component and lifecycle guides are editorial consolidations of ecosystem planning reviewed on the date above. They preserve component responsibilities, workload classes and intended handoffs while removing internal organization/legal material, example prices, unsupported deployment claims and speculative commands. Their <strong>Design / planned</strong> labels apply to the entire described workflow.</p>
+<p>Planning evidence supports an explanation of intent, not a claim that a service is operating. Public chain evidence above takes precedence for chain implementation details. A private source-to-page review ledger is retained for maintainers; private documents and paths are not exported by this site. When a release is verified, add its public source, version, environment and test result rather than erasing the design/implementation distinction.</p>
+</article><nav class="page-links" aria-label="Previous and next documents"><a rel="prev" href="status.html">← Status and support boundaries</a><a rel="next" href="glossary.html">Glossary →</a></nav><footer>Reviewed 9 October 2026 · Source-backed is not live-tested.<br>Verify release and network before use.</footer></main></div><aside class="outline" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#primary-evidence">Primary evidence</a></li><li><a href="#evidence-precedence">Evidence precedence</a></li><li><a href="#limits">Limits</a></li><li><a href="#design-evidence-versus-implementation-evidence">Design evidence versus implementation evidence</a></li></ul></aside></div></body></html>

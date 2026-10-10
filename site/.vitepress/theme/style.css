@@ -1,4 +1,0 @@
-:root { --vp-code-block-bg: #ffffff; }
-.dark { --vp-code-block-bg: #161618; }
-.vp-doc div[class*=language-] > span.lang { color: var(--vp-c-text-1); }
-.vp-doc div[class*=language-] code span { color: var(--vp-c-text-1) !important; }

@@ -1,74 +1,76 @@
-# Build and deploy these docs separately
+# Serve these docs as static files
 
-This repository contains the approved public documentation source for **autheo-os/autheo-dev-docs**. It is a standalone static VitePress site. Publishing the source does not activate hosting, configure a domain, or verify an AUTHEO product deployment. The build retains a noindex directive pending a separate indexing decision; that directive is **not access control**.
+This repository contains the approved public documentation for **autheo-os/autheo-dev-docs**. All 23 documents are committed as ordinary HTML. **Serve the repository root: no build, framework, backend, CDN or SPA fallback is required.** Reading and navigation work without JavaScript; local search is an optional enhancement.
 
-## Build locally
+Publishing source or HTML does not activate hosting, configure a domain, or verify an AUTHEO product deployment. The site retains **noindex, nofollow** pending a separate indexing decision; this is **not access control**.
+
+## Simplest host settings
+
+- Publish directory: **repository root (./)**.
+- Build command: **none**.
+- Entry file: **index.html**, already committed.
+- Serve normal .html, .css, .js and .svg files with their normal content types.
+- Do not enable a catch-all SPA rewrite. Each document has a real file, including directory index.html files.
+
+The same files work at **/** and **/autheo-dev-docs/**, or another subpath. Links and assets are relative; there is no mount-specific compilation. For example, reference/api.html is an ordinary file and remains readable when opened directly or reloaded.
+
+## Preview without installing dependencies
+
+With Node.js 22 or newer, run from this repository root:
+
+~~~sh
+node scripts/serve.mjs
+~~~
+
+Open the printed loopback URL. Stop with Ctrl+C. This small preview server has no rewrites and serves only the static-file allowlist, excluding source files, maintenance scripts, Git history, dependencies and test artifacts. No package installation is required to preview the committed viewer. Any ordinary static file server can also display it.
+
+When publishing a tracked repository root, maintenance files and the approved Markdown sources may also be reachable; they are public source, not secrets. Never upload an unfiltered local working directory containing ignored artifacts or credentials. Deny dotfiles, especially .git, and exclude node_modules, .gm and artifacts. For a static-only upload, use the explicit generated page/asset allowlist or the optional dist copy below.
+
+## Edit and regenerate
+
+The Markdown sources remain under site. publication.json is the exact 23-page public allowlist. Use the pinned build-time parser only when updating generated HTML:
 
 ~~~sh
 npm ci --ignore-scripts
 npm run check
-npm run docs:preview
 ~~~
 
-Use Node 22 or newer. Run commands from this repository root. The preview binds to loopback; use its printed URL. The publication allowlist stages only reviewed pages and configuration under .build/site; production output is **dist**. No private repository or runtime backend is required. Do not upload the repository root, .build, test artifacts, or dependency directories.
+The check runs source safety and provenance tests, then regenerates the root HTML and local search index and checks all local links, assets and fragments at both mounts. Commit the generated files together with source changes. No runtime dependency is needed by the resulting viewer.
 
-## Mount path and host settings
-
-For a domain root, use the default **/**:
+The same command also creates **dist/** containing only allowlisted HTML and assets. If an existing host already publishes dist, keep that publish directory and use this build command:
 
 ~~~sh
-npm run docs:build
+npm ci --ignore-scripts && npm run docs:build
 ~~~
 
-For the GitHub project path **/autheo-dev-docs/**, use this cross-platform command:
+This is optional compatibility for existing build-based hosting. The default remains **root, no build**. The docs:build:pages command is an alias for the same portable output, not a different build.
+
+## Verify before release
 
 ~~~sh
-npm run docs:build:pages
-~~~
-
-For another subpath on a POSIX shell:
-
-~~~sh
-DOCS_BASE=/your-path/ npm run docs:build
-~~~
-
-The path must begin and end with a slash. Select repository root as the working directory, install with npm ci --ignore-scripts, choose the build command above, and publish **dist/**. Each build is specific to its mount; rebuild rather than relocating an artifact compiled for a different path.
-
-The host must serve static .html pages, assets, directory index.html files and 404.html. No SPA rewrite, application backend or paid platform is required. No hosting provider, custom domain or DNS change is configured here.
-
-## Test the production artifact
-
-The build automatically validates all allowlisted routes and local links, assets and fragments. Run npm test for source and publication safety checks. External reference URLs and live network behavior are outside these offline checks.
-
-For browser testing, start a preview on port 4175 in one terminal:
-
-~~~sh
-npm run docs:preview -- --port 4175
-~~~
-
-In another terminal, run npm run test:browser. Set CHROMIUM_PATH to an installed Chromium executable if no Playwright-managed browser is available. QA_ORIGIN overrides the default http://127.0.0.1:4175 origin. For a project-path build, also set DOCS_BASE=/autheo-dev-docs/ in both preview and test environments. On PowerShell, set environment values using $env:DOCS_BASE = "/autheo-dev-docs/" before the commands.
-
-Browser checks cover every page at desktop and mobile sizes, accessibility rules, search, navigation and keyboard access. Automated checks are not full accessibility certification. Browser reports and screenshots remain local under artifacts/ and are not site inputs. Stop the preview when finished.
-
-## Export an independent source package
-
-~~~sh
+npm run test:browser
 npm run export
 ~~~
 
-This writes artifacts/standalone-docs from an explicit source-file allowlist, excluding Git history, private material, dependencies and build output. Inspect the export and build it independently. It is not automatically pushed or uploaded anywhere. provenance.json records the reviewed source revision and page hashes without private source paths.
+Browser tests start and stop their own loopback ordinary-file server. They cover every direct HTML URL and reload at root and project subpath, desktop and mobile viewports, navigation, keyboard access, local search, no-JavaScript reading and WCAG-tagged automated rules. Set CHROMIUM_PATH to an installed Chromium executable if necessary. Automated checks are not full accessibility certification. Reports and screenshots stay ignored under artifacts.
 
-## Optional verification CI
+The export command writes an independent allowlisted source package, including committed static output, to artifacts/standalone-docs. It excludes private material, ignored artifacts, dependencies and Git history. It is not automatically pushed or uploaded. provenance.json retains original source hashes, with only this deployment page adapted to the plain-file viewer.
 
-The inactive ci/verify.yml.example template runs local tests and builds both supported mounts. It is intentionally outside .github/workflows because the current publishing credential lacks workflow scope. A maintainer with existing authority can review and activate it later; no credential escalation is required to use this viewer. The template does not deploy or configure hosting.
+The inactive ci/verify.yml.example template checks the same portable artifact. It remains outside .github/workflows and does not deploy. No credential escalation is needed to use the viewer.
+
+## Hosting status and 404 diagnosis
+
+On **9 October 2026**, the repository had no configured homepage, GitHub reported **has_pages: false**, the Pages API returned **404**, and the deployments list was empty. No actual public site URL could be verified. The previous root also lacked an index.html entry file; this format now provides it. This fixes the repository entry-file problem but cannot activate an external host.
+
+If a host still returns 404, confirm that it publishes the current main revision and the **repository root**, or the optional generated **dist** directory when that existing build setup is retained. Verify the host's actual URL and a deep .html link before claiming a live deployment. Do not infer a site address from a repository name.
 
 ## Operator release checklist
 
 - Preserve source-backed, design/planned and unknown status statements.
-- Choose the hosting operator and actual mount; hosting activation is a separate decision.
-- Confirm applicable rights and official support/security contacts; this export adds no license grant or invented contact.
-- Build from the lockfile and review dependency advisories.
-- Verify routes, search, keyboard access and mobile navigation at the actual mount.
-- Decide separately whether to remove noindex and add domain-specific canonical/sitemap settings.
-- Deploy only dist; retain the previous artifact for rollback.
-- Smoke-test the actual public URL before claiming a live deployment, recording the release commit and date.
+- Keep all 23 reviewed public documents and confidentiality exclusions.
+- Confirm applicable rights and official support/security contacts; this viewer adds neither a license grant nor invented contacts.
+- If regenerating, install from the lockfile and review dependency advisories.
+- Verify direct links, refresh, search, keyboard access and mobile navigation at the actual host URL.
+- Decide separately whether to remove noindex or configure a domain.
+- Publish only approved files; retain the previous Git revision for rollback.
+- Smoke-test the actual public URL and record the release commit and date. Local checks alone do not establish live deployment.

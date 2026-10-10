@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="description" content="Evidence-led AUTHEO documentation: chain references and clearly qualified ecosystem design guides."><title>Data flows and handoffs · AUTHEO Docs</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/docs.css"><script src="../assets/search-index.js" defer></script><script src="../assets/docs.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">A</span> AUTHEO <span class="brand-label">/ Documentation</span></a><span class="header-note">Evidence-led guides</span></header><div class="layout"><aside class="sidebar"><details class="navigation" open><summary>Browse documentation</summary><nav aria-label="Documentation"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">AUTHEO documentation</a></li><li><a href="../getting-started/index.html">Getting started</a></li></ul></section><section class="nav-group"><h2>Concepts</h2><ul><li><a href="architecture.html">Architecture</a></li><li><a href="ecosystem.html">Ecosystem concepts</a></li><li><a aria-current="page" href="data-flows.html">Data flows and handoffs</a></li><li><a href="security.html">Security boundaries</a></li></ul></section><section class="nav-group"><h2>Ecosystem components</h2><ul><li><a href="../components/mesh.html">L0 Mesh</a></li><li><a href="../components/connectivity.html">Connectivity</a></li><li><a href="../components/devhub.html">DevHub and OpenEdge</a></li><li><a href="../components/marketplace.html">Marketplace</a></li><li><a href="../components/freddie.html">Freddie agents</a></li></ul></section><section class="nav-group"><h2>Guides</h2><ul><li><a href="../guides/integration.html">Integration preparation</a></li><li><a href="../guides/node-operator.html">Node preparation</a></li><li><a href="../guides/application-lifecycle.html">Plan an application</a></li><li><a href="../guides/provider-design.html">Provider preparation</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="../reference/api.html">API reference</a></li><li><a href="../reference/networks.html">Network reference</a></li><li><a href="../reference/status.html">Status and support boundaries</a></li><li><a href="../reference/sources.html">Sources and verification</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></section><section class="nav-group"><h2>Maintain and troubleshoot</h2><ul><li><a href="../troubleshooting/index.html">Troubleshooting</a></li><li><a href="../contributing/index.html">Contributing</a></li><li><a href="../deployment/index.html">Standalone deployment</a></li></ul></section></nav></details></aside><div class="reading"><section class="search" aria-label="Search documentation" hidden><label for="docs-search">Search all 23 documents</label><input id="docs-search" type="search" placeholder="Search topics, APIs, networks…" autocomplete="off" aria-controls="search-results" aria-describedby="search-status"><p id="search-status" role="status"></p><ul id="search-results"></ul></section><main id="main" tabindex="-1"><p class="eyebrow">AUTHEO / DEVELOPER DOCUMENTATION</p><article><h1 id="architecture-handoffs-and-data-flows">Architecture handoffs and data flows</h1>
+<p><strong>Design / planned</strong>, except for the separately source-backed chain references. This page makes ownership and failure boundaries explicit; it does not specify released endpoints or message schemas.</p>
+<h2 id="deployment-and-execution">Deployment and execution</h2>
+<pre tabindex="0"><code class="language-text">Source revision → GitOps synchronization → DevHub intent
+                                            ↓
+                         Marketplace eligibility and matching
+                                            ↓
+                              Provider/node admission
+                                            ↓
+Artifact and inputs → Mesh runtime → Service traffic / results
+                              ↓
+                    Logs, usage and outcome evidence
+</code></pre>
+<p>The build artifact must be attributable to the selected revision. The accepted workload must be attributable to its request and provider. Logs are useful for operations but may contain sensitive inputs; they are not automatically public or suitable for permanent chain storage.</p>
+<h2 id="commercial-and-chain-state">Commercial and chain state</h2>
+<pre tabindex="0"><code class="language-text">Buyer reviews terms → Authorized agreement action
+                               ↓
+                     Supported chain mechanism
+                               ↑
+Dispatch + usage + acceptance evidence → Reconciliation
+                               ↓
+                 Verified settlement state / unresolved dispute
+</code></pre>
+<p>The exact agreement mechanism is unresolved in this review. “Settlement pending” must remain separate from “execution failed.” A timeout observed by a client does not prove that an action had no effect. Before retrying, determine whether the original request was accepted or settled.</p>
+<h2 id="what-belongs-where">What belongs where?</h2>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Data</th>
+<th>Intended authority/location</th>
+<th>Important limit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Source and build inputs</td>
+<td>Developer-controlled source/build system</td>
+<td>A branch name alone is not immutable provenance</td>
+</tr>
+<tr>
+<td>Deployment intent</td>
+<td>Developer control plane</td>
+<td>Desired state is not observed runtime state</td>
+</tr>
+<tr>
+<td>Capacity and health</td>
+<td>Provider advertisements and mesh observations</td>
+<td>Freshness and reservation are required</td>
+</tr>
+<tr>
+<td>Workload secrets and application data</td>
+<td>Approved runtime/storage boundary</td>
+<td>Never infer confidentiality from encrypted transport alone</td>
+</tr>
+<tr>
+<td>Usage and completion evidence</td>
+<td>Attributable records correlated with dispatch</td>
+<td>Signature attribution is not independent correctness proof</td>
+</tr>
+<tr>
+<td>Payment outcome</td>
+<td>Chosen chain/contract state</td>
+<td>Confirm against the selected release and network</td>
+</tr>
+<tr>
+<td>Reputation</td>
+<td>Evidence-derived provider assessment</td>
+<td>Scoring and appeals need a defined policy</td>
+</tr>
+</tbody>
+</table>
+<h2 id="identity-boundaries">Identity boundaries</h2>
+<p>A repository identity, developer account, mesh endpoint identity, provider identity, agent identity and wallet/validator signer serve different purposes. The design needs explicit bindings and revocation rules between them. Reusing a key or equating two identifiers without a contract obscures authority and makes incident recovery harder.</p>
+<h2 id="failure-ownership">Failure ownership</h2>
+<p>DevHub should identify invalid configuration or build failure. Marketplace should explain admission, terms and reconciliation failures. Mesh should distinguish no-start, running, failed and unknown execution outcomes. Chain integration should distinguish submission from verified transaction outcome. Freddie should preserve the caller's authority and report the state of the whole task across those systems.</p>
+<p>See <a href="./ecosystem.html">ecosystem roles</a>, <a href="../components/marketplace.html">Marketplace</a> and <a href="./security.html">security</a>.</p>
+</article><nav class="page-links" aria-label="Previous and next documents"><a rel="prev" href="ecosystem.html">← Ecosystem concepts</a><a rel="next" href="security.html">Security boundaries →</a></nav><footer>Reviewed 9 October 2026 · Source-backed is not live-tested.<br>Verify release and network before use.</footer></main></div><aside class="outline" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#deployment-and-execution">Deployment and execution</a></li><li><a href="#commercial-and-chain-state">Commercial and chain state</a></li><li><a href="#what-belongs-where">What belongs where?</a></li><li><a href="#identity-boundaries">Identity boundaries</a></li><li><a href="#failure-ownership">Failure ownership</a></li></ul></aside></div></body></html>

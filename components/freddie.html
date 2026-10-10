@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="description" content="Evidence-led AUTHEO documentation: chain references and clearly qualified ecosystem design guides."><title>Freddie agents · AUTHEO Docs</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/docs.css"><script src="../assets/search-index.js" defer></script><script src="../assets/docs.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">A</span> AUTHEO <span class="brand-label">/ Documentation</span></a><span class="header-note">Evidence-led guides</span></header><div class="layout"><aside class="sidebar"><details class="navigation" open><summary>Browse documentation</summary><nav aria-label="Documentation"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">AUTHEO documentation</a></li><li><a href="../getting-started/index.html">Getting started</a></li></ul></section><section class="nav-group"><h2>Concepts</h2><ul><li><a href="../concepts/architecture.html">Architecture</a></li><li><a href="../concepts/ecosystem.html">Ecosystem concepts</a></li><li><a href="../concepts/data-flows.html">Data flows and handoffs</a></li><li><a href="../concepts/security.html">Security boundaries</a></li></ul></section><section class="nav-group"><h2>Ecosystem components</h2><ul><li><a href="mesh.html">L0 Mesh</a></li><li><a href="connectivity.html">Connectivity</a></li><li><a href="devhub.html">DevHub and OpenEdge</a></li><li><a href="marketplace.html">Marketplace</a></li><li><a aria-current="page" href="freddie.html">Freddie agents</a></li></ul></section><section class="nav-group"><h2>Guides</h2><ul><li><a href="../guides/integration.html">Integration preparation</a></li><li><a href="../guides/node-operator.html">Node preparation</a></li><li><a href="../guides/application-lifecycle.html">Plan an application</a></li><li><a href="../guides/provider-design.html">Provider preparation</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="../reference/api.html">API reference</a></li><li><a href="../reference/networks.html">Network reference</a></li><li><a href="../reference/status.html">Status and support boundaries</a></li><li><a href="../reference/sources.html">Sources and verification</a></li><li><a href="../reference/glossary.html">Glossary</a></li></ul></section><section class="nav-group"><h2>Maintain and troubleshoot</h2><ul><li><a href="../troubleshooting/index.html">Troubleshooting</a></li><li><a href="../contributing/index.html">Contributing</a></li><li><a href="../deployment/index.html">Standalone deployment</a></li></ul></section></nav></details></aside><div class="reading"><section class="search" aria-label="Search documentation" hidden><label for="docs-search">Search all 23 documents</label><input id="docs-search" type="search" placeholder="Search topics, APIs, networks…" autocomplete="off" aria-controls="search-results" aria-describedby="search-status"><p id="search-status" role="status"></p><ul id="search-results"></ul></section><main id="main" tabindex="-1"><p class="eyebrow">AUTHEO / DEVELOPER DOCUMENTATION</p><article><h1 id="freddie-delegated-agent-operations">Freddie: delegated agent operations</h1>
+<p><strong>Design / planned.</strong> Freddie is the proposed persistent agent harness for transactions, operations and upkeep. Its purpose is to continue a multi-step job over time, not merely answer a prompt. No supported AUTHEO Freddie release or permission contract was verified here.</p>
+<h2 id="intended-role">Intended role</h2>
+<p>An agent runs inside or alongside a workload, has an addressable identity, receives events and coordinates work. Planning examples include renewing a capacity lease, restarting a degraded service, coordinating build or AI tasks, collecting results and reporting progress.</p>
+<p>A typical design flow is <strong>trigger → coordinator → scoped worker tasks → result/evidence collection → requester update</strong>. The harness must retain task identity and completion state across retries or disconnections. A persistent process alone does not establish durable task execution.</p>
+<h2 id="relationships-to-other-components">Relationships to other components</h2>
+<ul>
+<li><strong>DevHub</strong> presents deployment intent and operational status.</li>
+<li><strong>Marketplace</strong> supplies offers, admission and agreement-related workflows.</li>
+<li><strong>Mesh</strong> carries communication and executes agent/worker processes.</li>
+<li><strong>L1</strong> handles supported chain transactions; an agent's report is not chain finality.</li>
+</ul>
+<p>Freddie consumes those interfaces. It must not silently redefine payment rules or treat peer connectivity as authority to act.</p>
+<h2 id="authorization-is-a-separate-design-gate">Authorization is a separate design gate</h2>
+<p>The planning explicitly leaves autonomy and spending policy unresolved. Before unattended use, a release needs:</p>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Boundary</th>
+<th>Questions that must be answered</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Principal</td>
+<td>Who delegated this task, and for which project/environment?</td>
+</tr>
+<tr>
+<td>Allowed actions</td>
+<td>Which reads, deployments, purchases and administrative actions are permitted?</td>
+</tr>
+<tr>
+<td>Money and signing</td>
+<td>What caps, asset/network restrictions and confirmation requirements apply?</td>
+</tr>
+<tr>
+<td>Delegation</td>
+<td>Can a worker delegate again, and do restrictions follow every subtask?</td>
+</tr>
+<tr>
+<td>Revocation</td>
+<td>How quickly does withdrawal of authority stop queued and active work?</td>
+</tr>
+<tr>
+<td>Audit</td>
+<td>Which request, approval, tool action and outcome can be reconstructed?</td>
+</tr>
+<tr>
+<td>Recovery</td>
+<td>Which operations are safe to retry, and how are duplicate side effects prevented?</td>
+</tr>
+</tbody>
+</table>
+<p>These are requirements, not claims of implemented controls. Do not provide a wallet seed or unrestricted signing key to an unverified harness.</p>
+<h2 id="example-recover-a-service-without-exceeding-authority">Example: recover a service without exceeding authority</h2>
+<p>A monitoring event can propose inspecting health and logs. A restart may be allowed within the existing deployment. Moving to a different provider, changing data locality or increasing budget may require fresh approval. The agent should report <strong>proposed</strong>, <strong>authorized</strong>, <strong>running</strong>, <strong>failed</strong> and <strong>completed</strong> distinctly, and verify the final result rather than equating a submitted tool call with success.</p>
+<p>Repository indexing, hot reload and code-analysis research are possible development aids, not proof of Freddie runtime features. See <a href="./devhub.html">developer tooling</a>, <a href="../concepts/security.html">security boundaries</a> and <a href="../reference/status.html">capability status</a>.</p>
+<h2 id="harness-responsibilities-behind-an-agent">Harness responsibilities behind an agent</h2>
+<p>The tooling research separates the reasoning/control loop, context handling, model-provider adapters, callable tools, procedural skills, conversation history, machine observations, scheduling and observability. This is a useful design decomposition: a model response, a tool execution and a durable task record are different objects. An interface such as a CLI, browser or message channel is an entry point, not necessarily a mandatory serial hop through every other interface.</p>
+<p>A procedural skill describes how to do work; it does not itself grant permission. A machine snapshot is an observation at a time, not proof that state remains unchanged. Context compression must not silently discard the caller's limits or unfinished obligations. Repository-graph integration is a research possibility, not a verified AUTHEO runtime dependency.</p>
+</article><nav class="page-links" aria-label="Previous and next documents"><a rel="prev" href="marketplace.html">← Marketplace</a><a rel="next" href="../guides/integration.html">Integration preparation →</a></nav><footer>Reviewed 9 October 2026 · Source-backed is not live-tested.<br>Verify release and network before use.</footer></main></div><aside class="outline" aria-label="On this page"><h2>On this page</h2><ul><li><a href="#intended-role">Intended role</a></li><li><a href="#relationships-to-other-components">Relationships to other components</a></li><li><a href="#authorization-is-a-separate-design-gate">Authorization is a separate design gate</a></li><li><a href="#example-recover-a-service-without-exceeding-authority">Example: recover a service without exceeding authority</a></li><li><a href="#harness-responsibilities-behind-an-agent">Harness responsibilities behind an agent</a></li></ul></aside></div></body></html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en-US"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex, nofollow"><meta name="description" content="Evidence-led AUTHEO documentation: chain references and clearly qualified ecosystem design guides."><title>Glossary · AUTHEO Docs</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/docs.css"><script src="../assets/search-index.js" defer></script><script src="../assets/docs.js" defer></script></head><body><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">A</span> AUTHEO <span class="brand-label">/ Documentation</span></a><span class="header-note">Evidence-led guides</span></header><div class="layout"><aside class="sidebar"><details class="navigation" open><summary>Browse documentation</summary><nav aria-label="Documentation"><section class="nav-group"><h2>Start here</h2><ul><li><a href="../index.html">AUTHEO documentation</a></li><li><a href="../getting-started/index.html">Getting started</a></li></ul></section><section class="nav-group"><h2>Concepts</h2><ul><li><a href="../concepts/architecture.html">Architecture</a></li><li><a href="../concepts/ecosystem.html">Ecosystem concepts</a></li><li><a href="../concepts/data-flows.html">Data flows and handoffs</a></li><li><a href="../concepts/security.html">Security boundaries</a></li></ul></section><section class="nav-group"><h2>Ecosystem components</h2><ul><li><a href="../components/mesh.html">L0 Mesh</a></li><li><a href="../components/connectivity.html">Connectivity</a></li><li><a href="../components/devhub.html">DevHub and OpenEdge</a></li><li><a href="../components/marketplace.html">Marketplace</a></li><li><a href="../components/freddie.html">Freddie agents</a></li></ul></section><section class="nav-group"><h2>Guides</h2><ul><li><a href="../guides/integration.html">Integration preparation</a></li><li><a href="../guides/node-operator.html">Node preparation</a></li><li><a href="../guides/application-lifecycle.html">Plan an application</a></li><li><a href="../guides/provider-design.html">Provider preparation</a></li></ul></section><section class="nav-group"><h2>Reference</h2><ul><li><a href="api.html">API reference</a></li><li><a href="networks.html">Network reference</a></li><li><a href="status.html">Status and support boundaries</a></li><li><a href="sources.html">Sources and verification</a></li><li><a aria-current="page" href="glossary.html">Glossary</a></li></ul></section><section class="nav-group"><h2>Maintain and troubleshoot</h2><ul><li><a href="../troubleshooting/index.html">Troubleshooting</a></li><li><a href="../contributing/index.html">Contributing</a></li><li><a href="../deployment/index.html">Standalone deployment</a></li></ul></section></nav></details></aside><div class="reading"><section class="search" aria-label="Search documentation" hidden><label for="docs-search">Search all 23 documents</label><input id="docs-search" type="search" placeholder="Search topics, APIs, networks…" autocomplete="off" aria-controls="search-results" aria-describedby="search-status"><p id="search-status" role="status"></p><ul id="search-results"></ul></section><main id="main" tabindex="-1"><p class="eyebrow">AUTHEO / DEVELOPER DOCUMENTATION</p><article><h1 id="glossary">Glossary</h1>
+<table tabindex="0">
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning in these docs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUTHEO Chain / L1</td>
+<td>Chain application and its consensus-backed state; source includes EVM integration</td>
+</tr>
+<tr>
+<td>L0 Mesh</td>
+<td>Design vocabulary for off-chain coordination and compute execution</td>
+</tr>
+<tr>
+<td>Cosmos chain ID</td>
+<td>String identifying a Cosmos network configuration; not interchangeable with a JSON-RPC chain ID</td>
+</tr>
+<tr>
+<td>EVM</td>
+<td>Ethereum Virtual Machine execution environment; distinct from a general-purpose workload host</td>
+</tr>
+<tr>
+<td>REST gateway</td>
+<td>HTTP interface mapped to protobuf service methods</td>
+</tr>
+<tr>
+<td>gRPC</td>
+<td>Typed service interface defined by protobuf</td>
+</tr>
+<tr>
+<td>Genesis</td>
+<td>Initial chain state/configuration artifact that must match the intended network</td>
+</tr>
+<tr>
+<td>THEO / aauth</td>
+<td>Display unit and native denomination as published by the network source; see network reference</td>
+</tr>
+<tr>
+<td>DevHub</td>
+<td>Developer-facing project and deployment concept</td>
+</tr>
+<tr>
+<td>Marketplace</td>
+<td>Commercial coordination concept; not proof of a released payment contract</td>
+</tr>
+<tr>
+<td>Freddie</td>
+<td>Agent-assisted operations concept; delegated permissions require a separate contract</td>
+</tr>
+<tr>
+<td>OpenEdge GitOps</td>
+<td>Planned bridge from versioned application source to DevHub desired deployment state</td>
+</tr>
+<tr>
+<td>Agentic OS</td>
+<td>Umbrella name for developer interfaces and Freddie, not a separate operating-system kernel</td>
+</tr>
+<tr>
+<td>Control plane</td>
+<td>Intent, admission, scheduling, authorization and policy decisions</td>
+</tr>
+<tr>
+<td>Data plane</td>
+<td>Artifact/input movement, workload execution, service traffic and results</td>
+</tr>
+<tr>
+<td>Fluid Compute</td>
+<td>Proposed warm-runtime reuse; no guaranteed start time</td>
+</tr>
+<tr>
+<td>Peer / endpoint identity</td>
+<td>Identity used to address and authenticate a mesh participant; distinct from wallet authority</td>
+</tr>
+<tr>
+<td>CRDT</td>
+<td>Mergeable replicated-state model proposed for operational synchronization; not payment consensus</td>
+</tr>
+<tr>
+<td>Attestation</td>
+<td>Evidence about a specified platform/property, not universal proof of safe behavior</td>
+</tr>
+<tr>
+<td>DaaS</td>
+<td>Developer-as-a-Service: proposed application/support offerings, potentially bundled with hosting</td>
+</tr>
+<tr>
+<td>Drain</td>
+<td>Stop admitting new work while completing or safely recovering existing work</td>
+</tr>
+<tr>
+<td>Admission</td>
+<td>Decision that current policy and capacity permit a particular workload</td>
+</tr>
+<tr>
+<td>Settlement</td>
+<td>Verified accounting/payment outcome under a specified chain mechanism</td>
+</tr>
+<tr>
+<td>Source-backed</td>
+<td>Supported by a particular source revision, without claiming live deployment</td>
+</tr>
+</tbody>
+</table>
+<p>See <a href="../concepts/architecture.html">architecture</a>, <a href="./networks.html">networks</a>, and <a href="./status.html">status</a>.</p>
+</article><nav class="page-links" aria-label="Previous and next documents"><a rel="prev" href="sources.html">← Sources and verification</a><a rel="next" href="../troubleshooting/index.html">Troubleshooting →</a></nav><footer>Reviewed 9 October 2026 · Source-backed is not live-tested.<br>Verify release and network before use.</footer></main></div><aside class="outline" aria-label="On this page"><h2>On this page</h2><ul></ul></aside></div></body></html>

@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {validateManifest,assertRegular} from '../scripts/publication.mjs';
 const make=files=>({schemaVersion:1,groups:[{pages:files.map(file=>({file,title:'Page'}))}]});
-test('actual allowlist is valid and includes home',()=>assert.ok(validateManifest(JSON.parse(fs.readFileSync('publication.json'))).length>=15));
+test('actual allowlist has exactly 23 reviewed pages including home',()=>assert.equal(validateManifest(JSON.parse(fs.readFileSync('publication.json'))).length,23));
 test('private paths and traversal are rejected',()=>{for(const f of ['../README.md','/index.md','docs/../../README.md','secret.mdx','a\\b.md'])assert.throws(()=>validateManifest(make(['index.md',f])));});
 test('duplicate and absent home fail',()=>{assert.throws(()=>validateManifest(make(['index.md','index.md'])));assert.throws(()=>validateManifest(make(['guide.md'])));});
 test('symlinks cannot enter publication stage',()=>{const dir=fs.mkdtempSync(path.join(os.tmpdir(),'docs-test-'));try{fs.writeFileSync(path.join(dir,'a.md'),'safe');fs.symlinkSync(path.join(dir,'a.md'),path.join(dir,'b.md'));assert.throws(()=>assertRegular(dir,'b.md'));assert.equal(assertRegular(dir,'a.md'),path.join(dir,'a.md'));}finally{fs.rmSync(dir,{recursive:true,force:true});}});

@@ -1,41 +1,39 @@
-# autheo-dev-docs
+# AUTHEO documentation — plain static files
 
-Standalone AUTHEO documentation viewer: 23 reviewed public pages, built with the existing VitePress toolchain. Includes local full-text search, grouped navigation, keyboard access and responsive mobile navigation.
+**Open [index.html](index.html), or serve this repository root. No build required.** All 23 reviewed documents are committed as complete HTML pages with relative links and local CSS. Reading, navigation, headings, tables and code work without JavaScript. Optional local full-text search adds no backend or CDN dependency.
 
-## Build and preview
+## Simplest hosting
 
-Use Node.js 22 or newer and npm. From this repository root:
+- Publish directory: **repository root (`./`)**.
+- Build command: **none**.
+- Serve ordinary files and directory `index.html`; **no SPA rewrite or clean-URL fallback**.
+- The same files work at a domain root or a subpath such as `/autheo-dev-docs/`, without rebuilding. Direct document URLs end in `.html` and work on reload.
 
-```sh
+For a local loopback preview, with Node.js 22 or newer (no package installation needed):
+
+~~~sh
+node scripts/serve.mjs
+~~~
+
+Open the printed URL. This preview only serves the explicit static-output allowlist; it never serves source, scripts, dependencies, Git history or local artifacts. Stop with Ctrl+C. Any basic static host can serve the committed HTML/CSS/JS instead. Do not upload an unfiltered local working directory containing ignored files or credentials. When uploading files yourself, use only the generated page paths and `assets/` listed by `publication.json` and `scripts/static-files.mjs`, or the optional static-only `dist/` copy below. A host that publishes the tracked repository root may also expose these already-public Markdown sources and maintenance files; those are not secrets. Deny dotfiles and never publish `.git`, `node_modules`, `.gm` or `artifacts`.
+
+## Optional editing and regeneration
+
+Markdown source remains in `site/`; `publication.json` is the exact 23-page allowlist. After changing public documentation:
+
+~~~sh
 npm ci --ignore-scripts
 npm run check
-npm run docs:preview
-```
+~~~
 
-`check` runs the source tests, stages only the explicit page allowlist, builds static HTML and checks local links, assets and fragments. Output: **`dist/`**. Preview binds to loopback; use its printed URL. No private repository, external content API or runtime server is required.
+This validates content/provenance and regenerates committed root HTML plus `assets/search-index.js`. Commit generated changes along with the source. It also makes an identical **static-only `dist/` copy**, useful when a host is already configured to publish `dist`. For that existing configuration only, use build command `npm ci --ignore-scripts && npm run docs:build` and publish `dist`. The default remains **root, no build**. `docs:build:pages` is a compatibility alias; no mount-specific build is needed.
 
-| Deployment mount | Build command | Publish directory |
-| --- | --- | --- |
-| Domain root `/` | `npm run docs:build` | `dist` |
-| GitHub project path `/autheo-dev-docs/` | `npm run docs:build:pages` | `dist` |
+Build-time Markdown parsing uses markdown-it; no framework or client Markdown renderer is shipped. `npm test` checks source safety and 22 unchanged page hashes; the deployment page is deliberately adapted. `npm run test:browser` starts its own loopback ordinary-file server and checks both mounts, all direct pages/reloads, desktop/mobile, keyboard/search, no-JavaScript reading, and accessibility rules. Set `CHROMIUM_PATH` if needed. `npm run export` creates an explicitly allowlisted independent source package including the ready-to-serve HTML under `artifacts/standalone-docs`. It never pushes or deploys.
 
-The project-path command is cross-platform. For another mount on POSIX shells, use `DOCS_BASE=/your-path/ npm run docs:build`; the path must begin and end with `/`. Build separately for each mount. Serve generated `.html` pages, assets, directory `index.html` files and `404.html` as ordinary static files; no SPA rewrite is needed. Upload **only `dist/`**, never the repository root, dependency directory or test artifacts.
+## Publication and deployment status
 
-## Scope and verification
+**Source-backed is not live-tested.** Design/planned qualifications, pinned public evidence and operational limits are unchanged. These docs do not certify product launch, network availability, security, compliance or performance.
 
-- `publication.json` is the 23-page content allowlist and sidebar source.
-- `site/` contains edited public documentation, theme and configuration.
-- `scripts/` and `tests/` provide the standalone build, safety checks and browser checks.
-- `provenance.json` records source revision and per-page hashes without exposing private source paths or history. The deployment page is intentionally adapted to this repository; all other 22 pages retain byte-for-byte source parity.
-- `npm run export` writes a fresh, allowlisted independent source package to `artifacts/standalone-docs`; it never pushes or deploys.
-- `npm run test:browser` tests a running production preview (default `http://127.0.0.1:4175`). Set `QA_ORIGIN`, `DOCS_BASE` and `CHROMIUM_PATH` as needed. See [deployment instructions](site/deployment/index.md).
+Hosting is not activated by this repository. At inspection on **9 October 2026**, GitHub reported no configured repository homepage, `has_pages: false`, no deployments, and its Pages API returned 404. No public hosting URL could therefore be verified. A previous source-only repository root had no `index.html`; serving that root could fail to display the docs. This version commits it. That repairs the missing entry file, not an unconfigured external host.
 
-**Source-backed is not live-tested.** Mesh, connectivity, DevHub/OpenEdge, Marketplace and Freddie preserve their design/planned qualifications. API/network references retain pinned public evidence and explicit live-verification limits. Publication does not certify a running product, security, compliance or performance.
-
-## Publication and hosting
-
-This repository is the approved public documentation-source destination. Hosting is **not activated by this repository**; no DNS/domain or paid hosting is configured. The site retains `noindex, nofollow` until an operator separately approves search-engine indexing; this is not access control.
-
-`ci/verify.yml.example` is an **inactive** GitHub Actions verification template. It is deliberately outside `.github/workflows`: the current publishing credential lacks workflow scope. An authorized maintainer may review and activate it later; it does not deploy. No credentials or permissions changes are needed for local builds.
-
-No new license grant or support/security contact is introduced by this export. Maintainers must confirm applicable rights and official contacts before adding them.
+The site retains `noindex, nofollow`; this is not access control. No new license grant or invented support/security contact is introduced. `ci/verify.yml.example` remains an inactive verification-only template, not a deployment workflow. No remote account settings, DNS, credentials or paid hosting were changed.
