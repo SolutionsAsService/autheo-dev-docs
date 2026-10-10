@@ -2,7 +2,9 @@
 
 This repository contains the approved public documentation for **autheo-os/autheo-dev-docs**. All 23 documents are committed as ordinary HTML. **Serve the repository root: no build, framework, backend, CDN or SPA fallback is required.** Reading and navigation work without JavaScript; local search is an optional enhancement.
 
-Publishing source or HTML does not activate hosting, configure a domain, or verify an AUTHEO product deployment. The site retains **noindex, nofollow** pending a separate indexing decision; this is **not access control**.
+**[Read the live documentation](https://autheo-os.github.io/autheo-dev-docs/).** GitHub Pages publishes the committed files from **main / repository root**, using the existing .nojekyll file and HTTPS. No project build command or custom deployment workflow is required. The [GitHub repository](https://github.com/autheo-os/autheo-dev-docs) is the source view, not the rendered website.
+
+This documentation deployment does not verify an AUTHEO product deployment. The site retains **noindex, nofollow** pending a separate indexing decision; this is **not access control**.
 
 ## Simplest host settings
 
@@ -32,10 +34,11 @@ The Markdown sources remain under site. publication.json is the exact 23-page pu
 
 ~~~sh
 npm ci --ignore-scripts
+npm run docs:build
 npm run check
 ~~~
 
-The check runs source safety and provenance tests, then regenerates the root HTML and local search index and checks all local links, assets and fragments at both mounts. Commit the generated files together with source changes. No runtime dependency is needed by the resulting viewer.
+First regenerate the root HTML and local search index with docs:build. The check then runs source safety, provenance and generated-output parity tests, regenerates again and checks all local links, assets and fragments at both mounts. If adapting the deployment page, update its publishedSha256 in provenance.json before checking; do not change the other 22 source-page hashes. Commit the generated files together with source changes. No runtime dependency is needed by the resulting viewer.
 
 The same command also creates **dist/** containing only allowlisted HTML and assets. If an existing host already publishes dist, keep that publish directory and use this build command:
 
@@ -60,9 +63,11 @@ The inactive ci/verify.yml.example template checks the same portable artifact. I
 
 ## Hosting status and 404 diagnosis
 
-On **9 October 2026**, the repository had no configured homepage, GitHub reported **has_pages: false**, the Pages API returned **404**, and the deployments list was empty. No actual public site URL could be verified. The previous root also lacked an index.html entry file; this format now provides it. This fixes the repository entry-file problem but cannot activate an external host.
+On **9 October 2026 (America/Denver)**, the repository source was accessible, but GitHub Pages was not configured and the documentation website returned HTTP 404. Committing index.html alone had not activated hosting. GitHub Pages was then enabled for **main / repository root**, and the initial deployment completed successfully. The public homepage and API reference returned HTTP 200 and byte-matched the committed HTML.
 
-If a host still returns 404, confirm that it publishes the current main revision and the **repository root**, or the optional generated **dist** directory when that existing build setup is retained. Verify the host's actual URL and a deep .html link before claiming a live deployment. Do not infer a site address from a repository name.
+To verify an update, check the repository Actions page for the successful **pages-build-deployment** run at the intended commit, then open the [homepage](https://autheo-os.github.io/autheo-dev-docs/) and a direct document such as [API reference](https://autheo-os.github.io/autheo-dev-docs/reference/api.html). The Pages source must remain **main / (root)**. A GitHub blob URL is a source-code view, not the documentation viewer.
+
+If a previously copied link returns 404, use the live documentation link above and its navigation. Document URLs end in .html; Markdown source paths and unconfigured extensionless routes are not the published document URLs. No catch-all rewrite masks missing pages. Verify both HTTP status and expected page content, including a direct reload, before claiming an update is live.
 
 ## Operator release checklist
 

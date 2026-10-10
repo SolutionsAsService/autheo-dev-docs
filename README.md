@@ -1,39 +1,42 @@
-# AUTHEO documentation — plain static files
+# AUTHEO developer documentation
 
-**Open [index.html](index.html), or serve this repository root. No build required.** All 23 reviewed documents are committed as complete HTML pages with relative links and local CSS. Reading, navigation, headings, tables and code work without JavaScript. Optional local full-text search adds no backend or CDN dependency.
+## [Read the documentation →](https://autheo-os.github.io/autheo-dev-docs/)
 
-## Simplest hosting
+The link above opens the **rendered documentation website**. [This GitHub repository](https://github.com/autheo-os/autheo-dev-docs) contains its source and maintenance tools; opening an HTML file on GitHub shows source, not the website.
 
-- Publish directory: **repository root (`./`)**.
-- Build command: **none**.
-- Serve ordinary files and directory `index.html`; **no SPA rewrite or clean-URL fallback**.
-- The same files work at a domain root or a subpath such as `/autheo-dev-docs/`, without rebuilding. Direct document URLs end in `.html` and work on reload.
+All **23 reviewed documents** are plain HTML with relative links and local CSS. Reading and navigation work without JavaScript; optional full-text search runs entirely in your browser. No frontend framework, backend, CDN or reader installation is required.
 
-For a local loopback preview, with Node.js 22 or newer (no package installation needed):
+## Hosting
+
+GitHub Pages publishes **`main` → `/(root)`**, with HTTPS enabled and the committed `.nojekyll` file. There is no project build command or custom deployment workflow. Push reviewed, regenerated static files to `main` to update the site.
+
+- [Documentation home](https://autheo-os.github.io/autheo-dev-docs/)
+- [API reference](https://autheo-os.github.io/autheo-dev-docs/reference/api.html)
+- [Hosting and verification guide](https://autheo-os.github.io/autheo-dev-docs/deployment/index.html)
+
+## Local preview
+
+With Node.js 22 or newer, no package installation needed:
 
 ~~~sh
 node scripts/serve.mjs
 ~~~
 
-Open the printed URL. This preview only serves the explicit static-output allowlist; it never serves source, scripts, dependencies, Git history or local artifacts. Stop with Ctrl+C. Any basic static host can serve the committed HTML/CSS/JS instead. Do not upload an unfiltered local working directory containing ignored files or credentials. When uploading files yourself, use only the generated page paths and `assets/` listed by `publication.json` and `scripts/static-files.mjs`, or the optional static-only `dist/` copy below. A host that publishes the tracked repository root may also expose these already-public Markdown sources and maintenance files; those are not secrets. Deny dotfiles and never publish `.git`, `node_modules`, `.gm` or `artifacts`.
+Open the printed loopback URL. The preview serves only allowlisted static files. The same files also work on any ordinary static host at a domain root or subpath, without SPA rewrites.
 
-## Optional editing and regeneration
+## Edit and verify
 
-Markdown source remains in `site/`; `publication.json` is the exact 23-page allowlist. After changing public documentation:
+Markdown lives in `site/`; `publication.json` lists exactly 23 approved pages. After editing:
 
 ~~~sh
 npm ci --ignore-scripts
+npm run docs:build
 npm run check
+npm run test:browser
 ~~~
 
-This validates content/provenance and regenerates committed root HTML plus `assets/search-index.js`. Commit generated changes along with the source. It also makes an identical **static-only `dist/` copy**, useful when a host is already configured to publish `dist`. For that existing configuration only, use build command `npm ci --ignore-scripts && npm run docs:build` and publish `dist`. The default remains **root, no build**. `docs:build:pages` is a compatibility alias; no mount-specific build is needed.
+Commit the generated root HTML, local search index and source together. Set `CHROMIUM_PATH` for browser tests if needed. `npm run check` also creates an identical static-only `dist/` copy for other hosts. `npm run export` creates an allowlisted standalone package under ignored `artifacts/`; it does not deploy. Never upload an unfiltered local checkout, Git history, dependencies, ignored artifacts or credentials.
 
-Build-time Markdown parsing uses markdown-it; no framework or client Markdown renderer is shipped. `npm test` checks source safety and 22 unchanged page hashes; the deployment page is deliberately adapted. `npm run test:browser` starts its own loopback ordinary-file server and checks both mounts, all direct pages/reloads, desktop/mobile, keyboard/search, no-JavaScript reading, and accessibility rules. Set `CHROMIUM_PATH` if needed. `npm run export` creates an explicitly allowlisted independent source package including the ready-to-serve HTML under `artifacts/standalone-docs`. It never pushes or deploys.
+## Scope
 
-## Publication and deployment status
-
-**Source-backed is not live-tested.** Design/planned qualifications, pinned public evidence and operational limits are unchanged. These docs do not certify product launch, network availability, security, compliance or performance.
-
-Hosting is not activated by this repository. At inspection on **9 October 2026**, GitHub reported no configured repository homepage, `has_pages: false`, no deployments, and its Pages API returned 404. No public hosting URL could therefore be verified. A previous source-only repository root had no `index.html`; serving that root could fail to display the docs. This version commits it. That repairs the missing entry file, not an unconfigured external host.
-
-The site retains `noindex, nofollow`; this is not access control. No new license grant or invented support/security contact is introduced. `ci/verify.yml.example` remains an inactive verification-only template, not a deployment workflow. No remote account settings, DNS, credentials or paid hosting were changed.
+These are source-backed docs, not certification of product launch, network availability, security, compliance or performance. Design/planned qualifications and the 22 unchanged source-page hashes remain intact. The site retains `noindex, nofollow` (not access control), confidentiality exclusions and existing rights; no new license or support contact is introduced.

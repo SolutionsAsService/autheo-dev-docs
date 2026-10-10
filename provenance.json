@@ -141,8 +141,8 @@
     {
       "file": "deployment/index.md",
       "sourceSha256": "a9f22af6445a142b1c5e7c64c6f48e940dfb7c657470d6e3b5a9b51b36f8e914",
-      "publishedSha256": "bdae38e68f452fee90f269eab3b65640b93d97e586c21a34d716c24e0209c6b3",
-      "adaptation": "Plain HTML no-build hosting, portable relative paths, standalone checks and truthful unconfigured-host status. No product claims changed."
+      "publishedSha256": "187cd781d25409dbeca83b4fe6530c7fbf8ef77cf9f1deb71f5e757256ff519a",
+      "adaptation": "Plain HTML no-build hosting, portable relative paths, standalone checks and verified GitHub Pages delivery from main/root. No product claims changed."
     }
   ]
 }
