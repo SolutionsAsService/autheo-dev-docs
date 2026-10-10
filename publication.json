@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "visibility": "public",
+  "releaseApproved": true,
+  "groups": [
+    {
+      "title": "Start here",
+      "pages": [
+        {
+          "file": "index.md",
+          "title": "AUTHEO documentation"
+        },
+        {
+          "file": "getting-started/index.md",
+          "title": "Getting started"
+        }
+      ]
+    },
+    {
+      "title": "Concepts",
+      "pages": [
+        {
+          "file": "concepts/architecture.md",
+          "title": "Architecture"
+        },
+        {
+          "file": "concepts/ecosystem.md",
+          "title": "Ecosystem concepts"
+        },
+        {
+          "file": "concepts/data-flows.md",
+          "title": "Data flows and handoffs"
+        },
+        {
+          "file": "concepts/security.md",
+          "title": "Security boundaries"
+        }
+      ]
+    },
+    {
+      "title": "Ecosystem components",
+      "pages": [
+        {
+          "file": "components/mesh.md",
+          "title": "L0 Mesh"
+        },
+        {
+          "file": "components/connectivity.md",
+          "title": "Connectivity"
+        },
+        {
+          "file": "components/devhub.md",
+          "title": "DevHub and OpenEdge"
+        },
+        {
+          "file": "components/marketplace.md",
+          "title": "Marketplace"
+        },
+        {
+          "file": "components/freddie.md",
+          "title": "Freddie agents"
+        }
+      ]
+    },
+    {
+      "title": "Guides",
+      "pages": [
+        {
+          "file": "guides/integration.md",
+          "title": "Integration preparation"
+        },
+        {
+          "file": "guides/node-operator.md",
+          "title": "Node preparation"
+        },
+        {
+          "file": "guides/application-lifecycle.md",
+          "title": "Plan an application"
+        },
+        {
+          "file": "guides/provider-design.md",
+          "title": "Provider preparation"
+        }
+      ]
+    },
+    {
+      "title": "Reference",
+      "pages": [
+        {
+          "file": "reference/api.md",
+          "title": "API reference"
+        },
+        {
+          "file": "reference/networks.md",
+          "title": "Network reference"
+        },
+        {
+          "file": "reference/status.md",
+          "title": "Status and support boundaries"
+        },
+        {
+          "file": "reference/sources.md",
+          "title": "Sources and verification"
+        },
+        {
+          "file": "reference/glossary.md",
+          "title": "Glossary"
+        }
+      ]
+    },
+    {
+      "title": "Maintain and troubleshoot",
+      "pages": [
+        {
+          "file": "troubleshooting/index.md",
+          "title": "Troubleshooting"
+        },
+        {
+          "file": "contributing/index.md",
+          "title": "Contributing"
+        },
+        {
+          "file": "deployment/index.md",
+          "title": "Standalone deployment"
+        }
+      ]
+    }
+  ],
+  "publicationScope": "Reviewed documentation source approved for autheo-os/autheo-dev-docs; hosting activation and operational product claims are not implied."
+}

@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-09",
+  "sourceRevision": "220af00b86f7e1e71856651aa4f4ae49a4165abb",
+  "publicContentRevision": "2f54ecb",
+  "destination": "autheo-os/autheo-dev-docs",
+  "scope": "23 explicitly allowlisted edited public pages. No private repository history, archived originals, audit reports or PDFs included.",
+  "pages": [
+    {
+      "file": "index.md",
+      "sourceSha256": "f02924aefa5105fe46df898b2b038dd253044fcde8ea679bc867f239a5868cfc",
+      "publishedSha256": "f02924aefa5105fe46df898b2b038dd253044fcde8ea679bc867f239a5868cfc",
+      "adaptation": null
+    },
+    {
+      "file": "getting-started/index.md",
+      "sourceSha256": "9a8da476636d794c79dfbd6fb4a6476b6ab098bd8a3fc06cca68de2b0a9b914a",
+      "publishedSha256": "9a8da476636d794c79dfbd6fb4a6476b6ab098bd8a3fc06cca68de2b0a9b914a",
+      "adaptation": null
+    },
+    {
+      "file": "concepts/architecture.md",
+      "sourceSha256": "2159a9c26bf4da68321dc0d8a8edf4bafe8fb635167133eb8ea323a89df5898b",
+      "publishedSha256": "2159a9c26bf4da68321dc0d8a8edf4bafe8fb635167133eb8ea323a89df5898b",
+      "adaptation": null
+    },
+    {
+      "file": "concepts/ecosystem.md",
+      "sourceSha256": "abf6884d14fc2b65cbc3adf451492a2eae38ee37bd35da170337affd80f03548",
+      "publishedSha256": "abf6884d14fc2b65cbc3adf451492a2eae38ee37bd35da170337affd80f03548",
+      "adaptation": null
+    },
+    {
+      "file": "concepts/data-flows.md",
+      "sourceSha256": "93cb09ca14c870b757381a57988111390c2e3071bc3052eaff91698a70218f66",
+      "publishedSha256": "93cb09ca14c870b757381a57988111390c2e3071bc3052eaff91698a70218f66",
+      "adaptation": null
+    },
+    {
+      "file": "concepts/security.md",
+      "sourceSha256": "87b6bf3599a7bf4d31e67b50ecaa2976539bbceb3572aefa537cc27a4dbbbbd1",
+      "publishedSha256": "87b6bf3599a7bf4d31e67b50ecaa2976539bbceb3572aefa537cc27a4dbbbbd1",
+      "adaptation": null
+    },
+    {
+      "file": "components/mesh.md",
+      "sourceSha256": "99fa90a7ee1f9a2841bf5ee3c7b2c4431648d8b0591d1c6872528725caa665f6",
+      "publishedSha256": "99fa90a7ee1f9a2841bf5ee3c7b2c4431648d8b0591d1c6872528725caa665f6",
+      "adaptation": null
+    },
+    {
+      "file": "components/connectivity.md",
+      "sourceSha256": "7d219e074e7871562c9d18ff0e9105d3b35ca5607cba09e2c787cd35901d83af",
+      "publishedSha256": "7d219e074e7871562c9d18ff0e9105d3b35ca5607cba09e2c787cd35901d83af",
+      "adaptation": null
+    },
+    {
+      "file": "components/devhub.md",
+      "sourceSha256": "376d1b14a93bde158791671b5c3faf268dab62809132fee58b15f2a63836cc61",
+      "publishedSha256": "376d1b14a93bde158791671b5c3faf268dab62809132fee58b15f2a63836cc61",
+      "adaptation": null
+    },
+    {
+      "file": "components/marketplace.md",
+      "sourceSha256": "51dc9197b42907fc6a63611adf6d1b63ec118b090df896174788e3c9d890db20",
+      "publishedSha256": "51dc9197b42907fc6a63611adf6d1b63ec118b090df896174788e3c9d890db20",
+      "adaptation": null
+    },
+    {
+      "file": "components/freddie.md",
+      "sourceSha256": "8e5f234f8e1f0f3e05000aac53e7af8e321518ee90eb4caf6c80623c563f1c81",
+      "publishedSha256": "8e5f234f8e1f0f3e05000aac53e7af8e321518ee90eb4caf6c80623c563f1c81",
+      "adaptation": null
+    },
+    {
+      "file": "guides/integration.md",
+      "sourceSha256": "4ad50e34ba30c84477dd2ab8441e71d7ab2e684fbee9b00902404cfa2fac47e7",
+      "publishedSha256": "4ad50e34ba30c84477dd2ab8441e71d7ab2e684fbee9b00902404cfa2fac47e7",
+      "adaptation": null
+    },
+    {
+      "file": "guides/node-operator.md",
+      "sourceSha256": "f8e214a4557790c9f4131c21f309905f58bcf44773798825ea485e0190718f97",
+      "publishedSha256": "f8e214a4557790c9f4131c21f309905f58bcf44773798825ea485e0190718f97",
+      "adaptation": null
+    },
+    {
+      "file": "guides/application-lifecycle.md",
+      "sourceSha256": "185b2e0a2f1762fc996a977ecdec9859ac2a38e7c443ce9e584afc787cb31070",
+      "publishedSha256": "185b2e0a2f1762fc996a977ecdec9859ac2a38e7c443ce9e584afc787cb31070",
+      "adaptation": null
+    },
+    {
+      "file": "guides/provider-design.md",
+      "sourceSha256": "f36bf66437ac6830fda15a9bd57bfce2e08dad82539c5acb7c8aac9fe52b083b",
+      "publishedSha256": "f36bf66437ac6830fda15a9bd57bfce2e08dad82539c5acb7c8aac9fe52b083b",
+      "adaptation": null
+    },
+    {
+      "file": "reference/api.md",
+      "sourceSha256": "b78cb1a4df91aeba4101d431f9925f26102498b6dd7a8074a093eba49f6279af",
+      "publishedSha256": "b78cb1a4df91aeba4101d431f9925f26102498b6dd7a8074a093eba49f6279af",
+      "adaptation": null
+    },
+    {
+      "file": "reference/networks.md",
+      "sourceSha256": "2d77a37622b6e785135a3e6905ee17af7d3fc5546ab49f718bdeb4435d7e50c7",
+      "publishedSha256": "2d77a37622b6e785135a3e6905ee17af7d3fc5546ab49f718bdeb4435d7e50c7",
+      "adaptation": null
+    },
+    {
+      "file": "reference/status.md",
+      "sourceSha256": "955f3f265d85c9679cf66accee2fd5e2efc792dfac800b922560b6236b113a85",
+      "publishedSha256": "955f3f265d85c9679cf66accee2fd5e2efc792dfac800b922560b6236b113a85",
+      "adaptation": null
+    },
+    {
+      "file": "reference/sources.md",
+      "sourceSha256": "c94f43ef6866b37d004f4ae6d93f8245a71d392544a2717dc64f2cb6852b1758",
+      "publishedSha256": "c94f43ef6866b37d004f4ae6d93f8245a71d392544a2717dc64f2cb6852b1758",
+      "adaptation": null
+    },
+    {
+      "file": "reference/glossary.md",
+      "sourceSha256": "ad28b80dbb1524e1d00afbd755f608af979b0abb4e8bcfbb614e3ed523034495",
+      "publishedSha256": "ad28b80dbb1524e1d00afbd755f608af979b0abb4e8bcfbb614e3ed523034495",
+      "adaptation": null
+    },
+    {
+      "file": "troubleshooting/index.md",
+      "sourceSha256": "a3e152bd1053e00122dddb27e60e791be3ca1f5245b5ffa4e762257c6ee201c2",
+      "publishedSha256": "a3e152bd1053e00122dddb27e60e791be3ca1f5245b5ffa4e762257c6ee201c2",
+      "adaptation": null
+    },
+    {
+      "file": "contributing/index.md",
+      "sourceSha256": "759c02c142a221934a34153d3c9e867e67b2e94b75dc37faec60e9a957c381d9",
+      "publishedSha256": "759c02c142a221934a34153d3c9e867e67b2e94b75dc37faec60e9a957c381d9",
+      "adaptation": null
+    },
+    {
+      "file": "deployment/index.md",
+      "sourceSha256": "a9f22af6445a142b1c5e7c64c6f48e940dfb7c657470d6e3b5a9b51b36f8e914",
+      "publishedSha256": "d0e4967ce6c79693d3c47b1432a8c76c73095d39a81e5fb69526aa74900f032f",
+      "adaptation": "Public destination, portable project mount, standalone checks and inactive CI instructions. No product claims changed."
+    }
+  ]
+}
