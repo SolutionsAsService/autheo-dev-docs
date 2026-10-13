@@ -1,3 +1,5 @@
+> **Stale copy.** The maintained repository is [autheo-os/autheo-dev-docs](https://github.com/autheo-os/autheo-dev-docs). This fork is archived (read-only).
+
 # AUTHEO developer documentation
 
 ## [Read the documentation →](https://autheo-os.github.io/autheo-dev-docs/)
